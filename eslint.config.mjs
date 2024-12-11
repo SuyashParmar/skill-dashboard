@@ -16,7 +16,11 @@ const eslintConfig = [
       // Override the rule to manage unused variables
       "@typescript-eslint/no-unused-vars": [
         "warn", // Or "off" to disable, "error" to enforce
-        { argsIgnorePattern: "^_" } // Ignore arguments that start with "_"
+        { argsIgnorePattern: "^_" }, // Ignore arguments that start with "_"
+      ],
+      "@typescript-eslint/no-explicit-any": [
+        "warn",
+        { argsIgnorePattern: "^_" },
       ]
     }
   }
