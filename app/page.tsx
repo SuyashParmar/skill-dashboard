@@ -55,7 +55,7 @@ export default function SkillDashboard() {
           <div className="flex items-center space-x-2">
             <span className="text-sm font-medium">Suyash Parmar</span>
             <Avatar>
-              <AvatarImage src="/man-svgrepo-com.svg" alt="Suyash Parmar" />
+              <AvatarImage src="https://i.pinimg.com/originals/d5/b0/4c/d5b04cc3dcd8c17702549ebc5f1acf1a.png" alt="Suyash Parmar" />
               <AvatarFallback>SP</AvatarFallback>
             </Avatar>
           </div>

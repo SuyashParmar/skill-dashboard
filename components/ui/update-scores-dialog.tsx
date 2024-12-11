@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -29,6 +29,19 @@ export function UpdateScoresDialog({
   onSave,
 }: UpdateScoresDialogProps) {
   const [values, setValues] = useState(initialValues)
+  const [showerror, setShowError] = useState(true);
+
+  useEffect(() => {
+    if (open) {
+      setShowError(true);
+
+      const timeout = setTimeout(() => {
+        setShowError(false);
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [open]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -62,6 +75,8 @@ export function UpdateScoresDialog({
                 setValues((prev) => ({ ...prev, rank: Number(e.target.value) }))
               }
             />
+            {showerror && <p className="text-red-600 text-sm">required | should be number</p>}
+
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -83,6 +98,8 @@ export function UpdateScoresDialog({
                 }))
               }
             />
+            {showerror && <p className="text-red-600 text-sm">required | percentile 0-100</p>}
+
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -104,6 +121,7 @@ export function UpdateScoresDialog({
                 }))
               }
             />
+
           </div>
         </div>
         <div className="flex justify-end gap-4">
